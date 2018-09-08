@@ -1,0 +1,17 @@
+!blue 2.0
+//=============================================================================
+//
+// File:         rwserve-brute-force/pro/prepare
+// Language:     prorenata script
+// Copyright:    Read Write Tools © 2018
+// License:      MIT License
+// Initial date: Aug 10, 2018
+// Contents:     Install/refresh node dependencies 
+//
+//=============================================================================
+
+// ---------- install node module dependencies ---------- 
+run {
+	sh git pull origin
+	sh npm install rwserve-plugin-sdk
+}

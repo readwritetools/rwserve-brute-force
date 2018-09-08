@@ -1,0 +1,63 @@
+!blue 2.0
+
+//good $PLUGIN-PATH='/srv/rwserve-plugins/rwserve-brute-force/dist/index.js'
+
+$PLUGIN-PATH='/palau/plugin/rwserve-brute-force/dbg/index.js'		// test
+
+$PRIVATE-KEY='/etc/pki/tls/private/localhost.key'
+$CERTIFICATE='/etc/pki/tls/certs/localhost.crt'
+$DOCUMENTS-PATH='/srv/rwserve/configuration-docs'
+
+server {
+	ip-address   127.0.0.1
+	port         7443
+	cluster-size 1
+	
+	registration {
+		customer-number CN-UNREGISTERED
+		access-key      AK-UNREGISTERED
+	}
+
+	modules {
+		information-headers on
+	}
+	
+	request {
+		methods GET,HEAD,POST
+
+		accept-types {
+			mime-type '*/*'
+		}
+	}
+	
+	content-types {
+		html    text/html
+	}
+}
+
+host {
+	hostname       localhost
+	document-root  `$DOCUMENTS-PATH/public`
+	encoding-cache `$DOCUMENTS-PATH/encoding-cache`
+	dynamic-cache  `$DOCUMENTS-PATH/dynamic-cache`
+	landing-page   `index.blue`
+	tls {
+		private-key	`$PRIVATE-KEY`
+	    certificate	`$CERTIFICATE`
+	}
+	plugins {
+		rwserve-brute-force {
+			location `$PLUGIN-PATH`
+			config {
+				max-visits      5      // number of attempts allowed before being blocked  	
+				grace-period    300    // number of seconds before resetting visit counter
+				blackout-period 900    // duration of blackout period (in seconds)
+				log-failures    true   // true to log failed attempts; false to remain silent
+			}
+		}
+		router {
+			`/login`        *methods=POST      *plugin=rwserve-brute-force
+			`*.blue`        *methods=GET,HEAD  *plugin=rwserve-blue
+		}	
+	}
+}
