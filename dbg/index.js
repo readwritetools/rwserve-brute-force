@@ -37,8 +37,8 @@
 //
 //=============================================================================
 	
-import {log} 		from 'rwserve-plugin-sdk';
-import {SC} 		from 'rwserve-plugin-sdk';
+var log = require('rwserve-plugin-sdk').log;
+var SC = require('rwserve-plugin-sdk').SC;
 
 class BruteForceData {
 	constructor() {
@@ -47,7 +47,7 @@ class BruteForceData {
 	}
 }
 
-export default class RwserveBruteForce {
+module.exports = class RwserveBruteForce {
 
 	constructor(hostConfig) {
 		this.hostConfig = hostConfig;
