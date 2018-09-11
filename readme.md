@@ -132,8 +132,8 @@ $DOCUMENTS-PATH='/srv/rwserve/configuration-docs'
 Start the server using the configuration file just prepared. Use Bash to start
 the server in the background, like this:
 
-<pre>*[user@host ~]#*
- rwserve /srv/rwserve-plugins/node_modules/rwserve-brute-force/etc/brute-force-config &
+<pre>
+[user@host ~]# rwserve /srv/rwserve-plugins/node_modules/rwserve-brute-force/etc/brute-force-config &
 </pre>
 
 #### Forcing a blackout
@@ -159,14 +159,14 @@ Once you've tested the plugin and are ready to go live, adjust your production
 web server's configuration in `/etc/rwserve/rwserve.conf` and restart it using `systemd`
 . .
 
-<pre>*[user@host ~]#*
- systemctl restart rwserve
+<pre>
+[user@host ~]# systemctl restart rwserve
 </pre>
 
 . . . then monitor its request/response activity with `journald`.
 
-<pre>*[user@host ~]#*
- journalctl -u rwserve -ef
+<pre>
+[user@host ~]# journalctl -u rwserve -ef
 </pre>
 
 ### Prerequisites
@@ -191,7 +191,7 @@ platforms. Windows, MacOS and BSD are not supported.
 
 <table>
 	<tr><th>Lessons</th></tr>
-	<tr><td>This plugin demonstrates these concepts: <ul><li>Passing configuration variables into the plugin.</li> <li>Using the <code>startup()</code> method for initialization. </li> <li>Accessing each request's IP address.</li> <li>Periodically triggering a cleanup operation.</li> </ul> Find other plugins for the <code>Read Write Tools HTTP/2 Server</code> using <a href='https://npmsearch.com?q=author:readwritetools'>npmsearch</a> with these keywords: <kbd>rwserve</kbd>, <kbd>http/2</kbd>, <kbd>plugin</kbd>. </td></tr>
+	<tr><td>This plugin demonstrates these concepts: <ul><li>Passing configuration variables into the plugin.</li> <li>Using the <code>startup()</code> method for initialization. </li> <li>Accessing each request's IP address.</li> <li>Periodically triggering a cleanup operation.</li> </ul> Find other plugins for the <code>Read Write Tools HTTP/2 Server</code> using <a href='https://npmsearch.com?q=author:readwritetools'>npmsearch</a> with these keywords: <kbd>rwserve</kbd>, <kbd>http2</kbd>, <kbd>plugins</kbd>. </td></tr>
 </table>
 
 <p align=center><a href='https://readwritetools.com'><img src='./img/rwtools.png' width=80 /></a></p>
