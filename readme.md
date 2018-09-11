@@ -36,7 +36,7 @@ types of attacks, you can set the `max-visits` variable to a low value, to detec
 and block attempts aggressively.
 
 In order to monitor the usefulness of this plugin you can enable the `log-failures`
- configuration switch. When `true` the IP address of each blocked request will be
+configuration switch. When `true` the IP address of each blocked request will be
 printed to the website's log.
 
 #### Customization
@@ -50,8 +50,9 @@ as these:
 
 ### Download
 
-The plugin module is available from <a href='https://www.npmjs.com/package/rwserve-brute-force'>NPM</a>. Before proceeding, you should already have
-`Node.js` and `RWSERVE` configured and tested.
+The plugin module is available from <a href='https://www.npmjs.com/package/rwserve-brute-force'>NPM</a>
+. Before proceeding, you should already have `Node.js` and `RWSERVE` configured and
+tested.
 
 This module should be installed on your web server in a well-defined place, so
 that it can be discovered by `RWSERVE`. The standard place for public domain
@@ -65,8 +66,8 @@ npm install rwserve-brute-force
 ### Configuration is Everything
 
 Make the software available by declaring it in the `plugins` section of your
-configuration file. For detailed instructions on how to do this, refer to the <a href='https://rwserve.readwritetools.com/plugins.blue'>plugins</a> documentation
-on the `Read Write Tools HTTP/2 Server` website.
+configuration file. For detailed instructions on how to do this, refer to the <a href='https://rwserve.readwritetools.com/plugins.blue'>plugins</a>
+documentation on the `Read Write Tools HTTP/2 Server` website.
 
 #### TL;DR
 
@@ -103,9 +104,10 @@ during which all requests to the target resource, by the blacklisted IP, are
 blocked. When this time period has elapsed, the IP address is removed from the
 blacklist and subsequent requests are honored, starting with a new grace period.
 
-`log-failures` is a switch that may be either <kbd>true</kbd> or <kbd>false</kbd>. If true, each request
-by an IP address during a blackout period is recorded in the web log. If false,
-blackouts are silently enforced without recording to the web log.
+`log-failures` is a switch that may be either <kbd>true</kbd> or <kbd>false
+</kbd>. If true, each request by an IP address during a blackout period is recorded in
+the web log. If false, blackouts are silently enforced without recording to the
+web log.
 
 The `router` section lists one or more target resources that will participate in
 the brute force scheme. In the above example, all HTTP `POST` requests for
@@ -143,7 +145,7 @@ requests will return with `403 Forbidden` with a response header `rw-rbac-forbid
 indicating that invalid credentials were provided. The sixth and subsequent
 requests will return `403 Forbidden` without any supplemental header. Close
 examination of the server's logged messages will reveal something like `error RwserveBruteForce RA=127.0.0.1; CT=6`
-nt (CT) for the blocked request.
+indicating the remote address (RA) and count (CT) for the blocked request.
 
 <pre>
 curl -X POST -d "action=login&user=root&password=toor" https://localhost:7443/rbac/credentials/login -H content-type:application/x-www-form-urlencoded -H content-length:36 -v
@@ -157,7 +159,7 @@ curl -X POST -d "action=login&user=devops&password=me" https://localhost:7443/rb
 
 Once you've tested the plugin and are ready to go live, adjust your production
 web server's configuration in `/etc/rwserve/rwserve.conf` and restart it using `systemd`
-. .
+. . .
 
 <pre>
 [user@host ~]# systemctl restart rwserve
