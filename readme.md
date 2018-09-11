@@ -7,7 +7,7 @@
 
 <a href='https://rwserve.readwritetools.com'><img src='./img/rwserve.png' width=80 align=right /></a>
 
-###### *Detect and block repetitive POSTs attempting to crack authorization *
+###### Detect and block repetitive POSTs attempting to crack authorization
 
 # RWSERVE Brute Force
 
@@ -38,6 +38,8 @@ and block attempts aggressively.
 In order to monitor the usefulness of this plugin you can enable the `log-failures`
  configuration switch. When `true` the IP address of each blocked request will be
 printed to the website's log.
+
+#### Customization
 
 This plugin is open source and can be modified or enhanced to perform tasks such
 as these:
@@ -71,7 +73,7 @@ on the `Read Write Tools HTTP/2 Server` website.
 <pre>
 plugins {
     rwserve-brute-force {
-        location `/srv/rwserve-plugins/rwserve-brute-force/dist/index.js`
+        location `/srv/rwserve-plugins/node_modules/rwserve-brute-force/dist/index.js`
         config {
             max-visits      5
             grace-period    300
@@ -106,7 +108,7 @@ by an IP address during a blackout period is recorded in the web log. If false,
 blackouts are silently enforced without recording to the web log.
 
 The `router` section lists one or more target resources that will participate in
-the brute force scheme. In the above example, all HTTP POST requests for
+the brute force scheme. In the above example, all HTTP `POST` requests for
 resource paths beginning with `/rbac/credentials` will participate.
 
 #### Cookbook
@@ -117,7 +119,7 @@ To use this configuration file, adjust these variables if they don't match your
 server setup:
 
 <pre>
-$PLUGIN-PATH='/srv/rwserve-plugins/rwserve-brute-force/dist/index.js'
+$PLUGIN-PATH='/srv/rwserve-plugins/node_modules/rwserve-brute-force/dist/index.js'
 $PRIVATE-KEY='/etc/pki/tls/private/localhost.key'
 $CERTIFICATE='/etc/pki/tls/certs/localhost.crt'
 $DOCUMENTS-PATH='/srv/rwserve/configuration-docs'
@@ -131,7 +133,7 @@ Start the server using the configuration file just prepared. Use Bash to start
 the server in the background, like this:
 
 <pre>*[user@host ~]#*
- rwserve /srv/rwserve-plugins/rwserve-brute-force/etc/brute-force-config &
+ rwserve /srv/rwserve-plugins/node_modules/rwserve-brute-force/etc/brute-force-config &
 </pre>
 
 #### Forcing a blackout
@@ -149,6 +151,22 @@ curl -X POST -d "action=login&user=admin&password=adm" https://localhost:7443/rb
 curl -X POST -d "action=login&user=debug&password=dbg" https://localhost:7443/rbac/credentials/login -H content-type:application/x-www-form-urlencoded -H content-length:36 -v
 curl -X POST -d "action=login&user=setup&password=123" https://localhost:7443/rbac/credentials/login -H content-type:application/x-www-form-urlencoded -H content-length:36 -v
 curl -X POST -d "action=login&user=devops&password=me" https://localhost:7443/rbac/credentials/login -H content-type:application/x-www-form-urlencoded -H content-length:36 -v
+</pre>
+
+#### Deployment
+
+Once you've tested the plugin and are ready to go live, adjust your production
+web server's configuration in `/etc/rwserve/rwserve.conf` and restart it using `systemd`
+. .
+
+<pre>*[user@host ~]#*
+ systemctl restart rwserve
+</pre>
+
+. . . then monitor its request/response activity with `journald`.
+
+<pre>*[user@host ~]#*
+ journalctl -u rwserve -ef
 </pre>
 
 ### Prerequisites

@@ -29,9 +29,17 @@ compare {
 	dest      '../src'
 }
 
+// ---------- copy dbg to srv/rwserve-plugin for in-place testing ---------- 
+copy {
+	source    '../dbg'
+	dest      '/srv/rwserve-plugins/node_modules/rwserve-brute-force/dist'
+	overwrite older
+}
+
 // ---------- Convert blue document into Github Flavored readme.md ---------- 
 recurse {
 	source '/palau/www/rwserve.readwritetools.com/plugins/rwserve-brute-force.blue'
 	dest   '../readme.md' 
+	overwrite older
 	exec ghfm
 }

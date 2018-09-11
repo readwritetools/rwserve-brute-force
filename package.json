@@ -1,19 +1,30 @@
 {
   "name": "rwserve-brute-force",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "description": "RWSERVE plugin to temporarily blacklist an IP address that attempts to POST too many times in a given period",
-  "private": true,
   "author": "Read Write Tools",
-  "license": "MIT License",
+  "license": "MIT",
   "main": "dist/index.js",
-  "scripts": {
-    "bump-version": "npm version patch && git push && git push --tags",
-    "local": "node ../../app/rwserve/dbg/main.js ./etc/brute-force-config",
-    "start": "rwserve ./etc/brute-force-config"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/readwritetools/rwserve-brute-force.git"
   },
   "dependencies": {
-    "rwserve-plugin-sdk": "git+ssh://root@nk024:/keep/rwserve-plugin-sdk#"
+    "rwserve-plugin-sdk": "^1.0.1"
   },
+  "scripts": {
+    "bump-version": "npm version patch && git push && git push --tags",
+    "start": "rwserve ./etc/brute-force-config"
+  },
+  "keywords": [
+    "rwserve",
+    "http2",
+    "plugins"
+  ],
+  "bugs": {
+    "url": "https://github.com/readwritetools/rwserve-brute-force/issues"
+  },
+  "homepage": "https://rwserve.readwritetools.com/plugins/rwserve-brute-force.blue",
   "files": [
     "dist",
     "etc",
