@@ -18,7 +18,7 @@
 /*
 	plugins {
 		rwserve-brute-force {
-			location `/srv/rwserve-plugins/rwserve-brute-force.class.js`
+			location `/srv/rwserve-plugins/node_modules/rwserve-brute-force/dist/index.js`
 			config {
 				max-visits      5      // number of attempts allowed before being blocked  	
 				grace-period    300    // number of seconds before resetting visit counter
@@ -66,7 +66,7 @@ module.exports = class RwserveBruteForce {
 	}
 	
 	async startup() {
-		log.debug('RwserveBruteForce', 'v1.0.0; © 2018 Read Write Tools; MIT License');
+		log.debug('RwserveBruteForce', `version ${this.bruteForceConfig.pluginVersion}; © 2018 Read Write Tools; MIT License`);
 		
 		// sanitize, using fallbacks if necessary
 		this.maxVisits = parseInt(this.bruteForceConfig.maxVisits);
@@ -138,7 +138,7 @@ module.exports = class RwserveBruteForce {
 		// check to see if it exceeds the threshold
 		if (bruteForceData.counter > this.maxVisits) {			
 			workOrder.setStatusCode(SC.FORBIDDEN_403);
-			workOrder.setEmptyPayload();			
+			workOrder.setEmptyResponseBody();			
 			if (this.logFailures)
 				log.error(`RwserveBruteForce RA=${ipAddress}; CT=${bruteForceData.counter}`);
 		}

@@ -138,7 +138,7 @@ export default class RwserveBruteForce {
 		// check to see if it exceeds the threshold
 		if (bruteForceData.counter > this.maxVisits) {			
 			workOrder.setStatusCode(SC.FORBIDDEN_403);
-			workOrder.setEmptyPayload();			
+			workOrder.setEmptyResponseBody();			
 			if (this.logFailures)
 				log.error(`RwserveBruteForce RA=${ipAddress}; CT=${bruteForceData.counter}`);
 		}
