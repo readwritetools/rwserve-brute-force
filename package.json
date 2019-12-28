@@ -1,6 +1,6 @@
 {
   "name": "rwserve-brute-force",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "RWSERVE plugin to temporarily blacklist an IP address that attempts to POST too many times in a given period",
   "author": "Read Write Tools",
   "license": "MIT",
