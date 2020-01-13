@@ -5,11 +5,20 @@
 
 
 
-<a href='https://rwserve.readwritetools.com'><img src='./img/rwserve.png' width=80 align=right /></a>
 
-###### Detect and block repetitive POSTs attempting to crack authorization
+<figure>
+	<img src='/img/plugins/brute-force/brute-force-pixaby-the-digital-way.jpg' width='100%' />
+	<figcaption></figcaption>
+</figure>
 
-# RWSERVE Brute Force
+# Brute Force
+
+## Detect and block repetitive POSTs
+
+
+<address>
+<img src='/img/rwtools.png' width=80 /> by <a href='https://readwritetools.com' title='Read Write Tools'>Read Write Tools</a> <time datetime=2018-10-22>Oct 22, 2018</time></address>
+
 
 
 <table>
@@ -155,40 +164,7 @@ curl -X POST -d "action=login&user=setup&password=123" https://localhost:7443/rb
 curl -X POST -d "action=login&user=devops&password=me" https://localhost:7443/rbac/credentials/login -H content-type:application/x-www-form-urlencoded -H content-length:36 -v
 </pre>
 
-#### Deployment
-
-Once you've tested the plugin and are ready to go live, adjust your production
-web server's configuration in `/etc/rwserve/rwserve.conf` and restart it using `systemd`
-. . .
-
-<pre>
-[user@host ~]# systemctl restart rwserve
-</pre>
-
-. . . then monitor its request/response activity with `journald`.
-
-<pre>
-[user@host ~]# journalctl -u rwserve -ef
-</pre>
-
-### Prerequisites
-
-This is a plugin for the **Read Write Tools HTTP/2 Server**, which works on Linux
-platforms. Windows, MacOS and BSD are not supported.
-
-
-<table>
-	<tr><th>Software</th> <th>Minimum Version</th></tr>
-	<tr><td>Ubuntu</td> <td>16</td></tr>
-	<tr><td>Debian</td> <td>9</td></tr>
-	<tr><td>Fedora</td> <td>27</td></tr>
-	<tr><td>CentOS</td> <td>7.4</td></tr>
-	<tr><td>RHEL</td> <td>8</td></tr>
-	<tr><td>RWSERVE</td> <td>1.0</td></tr>
-	<tr><td>Node.js</td> <td>10.3</td></tr>
-</table>
-
-## Review
+### Review
 
 
 <table>
@@ -196,4 +172,27 @@ platforms. Windows, MacOS and BSD are not supported.
 	<tr><td>This plugin demonstrates these concepts: <ul><li>Passing configuration variables into the plugin.</li> <li>Using the <code>startup()</code> method for initialization. </li> <li>Accessing each request's IP address.</li> <li>Periodically triggering a cleanup operation.</li> </ul> Find other plugins for the <code>Read Write Tools HTTP/2 Server</code> using <a href='https://www.npmjs.com/search?q=keywords:rwserve'>npm</a> with these keywords: <kbd>rwserve</kbd>, <kbd>http2</kbd>, <kbd>plugins</kbd>. </td></tr>
 </table>
 
-<p align=center><a href='https://readwritetools.com'><img src='./img/rwtools.png' width=80 /></a></p>
+### License
+
+The <span>rwserve-brute-force</span> plugin is licensed under the
+MIT License.
+
+<img src='/img/blue-seal-mit.png' width=80 align=right />
+
+<details>
+	<summary>MIT License</summary>
+	<p>Copyright © 2020 Read Write Tools.</p>
+	<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+	<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+	<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+</details>
+
+### Availability
+
+
+<table>
+	<tr><td>Source code</td> 			<td><a href='https://github.com/readwritetools/rwserve-brute-force'>github</a></td></tr>
+	<tr><td>Package installation</td> <td><a href='https://www.npmjs.com/package/rwserve-brute-force'>NPM</a></td></tr>
+	<tr><td>Documentation</td> 		<td><a href='https://hub.readwritetools.com/plugins/brute-force.blue'>Read Write Hub</a></td></tr>
+</table>
+
