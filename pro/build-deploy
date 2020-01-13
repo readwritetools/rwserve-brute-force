@@ -16,5 +16,5 @@ run {
 	// sh renata test			// simple call to ../../app/rwserve/dbg/main.js
 	sh renata readme			// Convert story to markdown, and copy from hub.readwritetools.com
 	sh renata deploy			// copy to dist, check for cruft, bump version, push repo
-  sh publish					// publish to NPM
+	sh renata publish			// publish to NPM
 }

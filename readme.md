@@ -164,6 +164,39 @@ curl -X POST -d "action=login&user=setup&password=123" https://localhost:7443/rb
 curl -X POST -d "action=login&user=devops&password=me" https://localhost:7443/rbac/credentials/login -H content-type:application/x-www-form-urlencoded -H content-length:36 -v
 </pre>
 
+#### Deployment
+
+Once you've tested the plugin and are ready to go live, adjust your production
+web server's configuration in `/etc/rwserve/rwserve.conf` and restart it using `systemd`
+. . .
+
+<pre>
+[user@host ~]# systemctl restart rwserve
+</pre>
+
+. . . then monitor its request/response activity with `journald`.
+
+<pre>
+[user@host ~]# journalctl -u rwserve -ef
+</pre>
+
+### Prerequisites
+
+This is a plugin for the **Read Write Tools HTTP/2 Server**, which works on Linux
+platforms. Windows, MacOS and BSD are not supported.
+
+
+<table>
+	<tr><th>Software</th> <th>Minimum Version</th></tr>
+	<tr><td>Ubuntu</td> <td>16</td></tr>
+	<tr><td>Debian</td> <td>9</td></tr>
+	<tr><td>Fedora</td> <td>27</td></tr>
+	<tr><td>CentOS</td> <td>7.4</td></tr>
+	<tr><td>RHEL</td> <td>8</td></tr>
+	<tr><td>RWSERVE</td> <td>1.0</td></tr>
+	<tr><td>Node.js</td> <td>10.3</td></tr>
+</table>
+
 ### Review
 
 
