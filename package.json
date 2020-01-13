@@ -10,7 +10,7 @@
     "url": "https://github.com/readwritetools/rwserve-brute-force.git"
   },
   "dependencies": {
-    "rwserve-plugin-sdk": "^1.0.3"
+    "rwserve-plugin-sdk": "^1.0.4"
   },
   "scripts": {
     "bump-version": "npm version patch && git push && git push --tags",
