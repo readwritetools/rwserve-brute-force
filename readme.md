@@ -6,10 +6,17 @@
 
 
 
+
+
+
+
+
 <figure>
 	<img src='/img/plugins/brute-force/brute-force-pixaby-the-digital-way.jpg' width='100%' />
 	<figcaption></figcaption>
 </figure>
+
+##### Open Source RWSERVE plugin
 
 # Brute Force
 
@@ -17,7 +24,7 @@
 
 
 <address>
-<img src='/img/rwtools.png' width=80 /> by <a href='https://readwritetools.com' title='Read Write Tools'>Read Write Tools</a> <time datetime=2018-10-22>Oct 22, 2018</time></address>
+<img src='/img/48x48/rwtools.png' /> by <a href='https://readwritetools.com' title='Read Write Tools'>Read Write Tools</a> <time datetime=2018-10-22>Oct 22, 2018</time></address>
 
 
 
